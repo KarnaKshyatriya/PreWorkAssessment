@@ -1,6 +1,7 @@
 
+import java.io.*;
 import static java.lang.System.exit;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,10 +19,10 @@ import java.util.Scanner;
 class Main
 {
 	private static int choice;
-	static Scanner sc = new Scanner(System.in);
+	static BufferedReader sc=new BufferedReader(new InputStreamReader(System.in) );
 	
 	
-public static void main(String args[])
+public static void main(String args[])throws IOException
 {
  Main obj = new Main();
 
@@ -29,8 +30,8 @@ public static void main(String args[])
 
                 
 
-do {
 
+do{
 System.out.println("Enter your choice from below list.\n" + "1. Find palindrome of number.\n"
 
 + "2. Print Pattern for a given no.\n" + "3. Check whether the no is a  prime number.\n"
@@ -39,9 +40,14 @@ System.out.println("Enter your choice from below list.\n" + "1. Find palindrome 
 
 System.out.println();
 
- 
 
-choice = sc.nextInt();
+try{
+choice = Integer.parseInt(sc.readLine());
+}
+catch(Exception e)
+{
+    System.out.println("Please Enter a integer number from the above choices");
+}
 
 switch (choice) {
 case 0: {
@@ -79,6 +85,7 @@ break;
 case 3: {
 
 obj.checkPrimeNumber();
+break;
 
 }
 
@@ -117,12 +124,7 @@ System.out.println("Invalid choice. Enter a valid no.\n");
         System.out.println("Please Enter Number to check");
         int num=0;
         try{
-        num=sc.nextInt();
-        }
-        catch(Exception e)
-        {
-            System.out.println("Please enter an Integer number");
-        }
+        num=Integer.parseInt(sc.readLine());
         String str=Integer.toString(num);
         String str2="";
         for(int i=str.length()-1;i>=0;i--)
@@ -134,6 +136,13 @@ System.out.println("Invalid choice. Enter a valid no.\n");
             System.out.println("Palindrome");
         else
             System.out.println("Not Palindrome");
+        }
+        catch(Exception e)
+        {
+            System.out.println("Please enter an Integer number");
+          
+        }
+        
         
         
         
@@ -144,13 +153,8 @@ System.out.println("Invalid choice. Enter a valid no.\n");
     System.out.println("pLease enter the pattern row number");
     int num=0;
    try{
-        num=sc.nextInt();
-        }
-        catch(Exception e)
-        {
-            System.out.println("Please enter an Integer number");
-        }
-    for(int i=0;i<num;i++)
+        num=Integer.parseInt(sc.readLine());
+         for(int i=0;i<num;i++)
     {
         for(int j=0;j<num-i;j++)
         {
@@ -158,6 +162,13 @@ System.out.println("Invalid choice. Enter a valid no.\n");
         }
         System.out.println("");
     }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Please enter an Integer number");
+      
+        }
+   
     
     }
     private void checkPrimeNumber() {//To change body of generated methods, choose Tools | Templates.
@@ -165,13 +176,8 @@ System.out.println("Invalid choice. Enter a valid no.\n");
         System.out.println("pLease enter a number to Check Prime or Composite");
         int num=0;
     try{
-        num=sc.nextInt();
-        }
-        catch(Exception e)
-        {
-            System.out.println("Please enter an Integer number");
-        }
-    int flag=0;
+        num=Integer.parseInt(sc.readLine());
+        int flag=0;
     for(int i=2;i<num;i++)
     {
         if(num%i==0)
@@ -187,21 +193,22 @@ System.out.println("Invalid choice. Enter a valid no.\n");
             System.out.println("Prime Number");
         else
            System.out.println("Not Prime Number"); 
-    }
-    
-
-    private void printFibonacciSeries() { //To change body of generated methods, choose Tools | Templates.
-        //System.out.println("Fourth");\
-        System.out.println("Please enter the limit of Fibonacci series");
-        int num=0;
-        try{
-        num=sc.nextInt();
         }
         catch(Exception e)
         {
-            System.out.println("Please enter an Integer number");
+            System.out.println("Please enter an Integer number");           
         }
-        int first=0,second=1,sum;
+    
+    }
+    
+
+    private void printFibonacciSeries() { 
+        System.out.println("Please enter the limit of Fibonacci series");
+        int num=0;
+        try
+        {
+        num=Integer.parseInt(sc.readLine());
+         int first=0,second=1,sum;
         System.out.print(first+ " "+second+" ");
         for(int i=2;i<num;i++)
         {
@@ -210,9 +217,18 @@ System.out.println("Invalid choice. Enter a valid no.\n");
             first=second;
             second=sum;
             
+            
         }
         System.out.println("");
     }
+        
+        catch(Exception e)
+        {
+            System.out.println("Please enter a Ineteger number as input");
+        
+        }
+       
+}
+}
 	
 
-}
